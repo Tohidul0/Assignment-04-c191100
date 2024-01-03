@@ -15,9 +15,34 @@ import axios from 'axios';
                 const budgetresponse = await axios.get("http://localhost:3000/budget")
                 setBudget(budgetresponse.data);
 
-                //Income set from server sidr income data-----------------------------------------------
-                const incomeResponse = await axios.get("http://localhost:3000/budget/income")
+                
+               
+                
+
+                //Income set from server side income data-----------------------------------------------
+                let incomeResponse = await axios.get("http://localhost:3000/budget/income")
                 setIncome(incomeResponse.data)
+
+
+                // post income data too server------------------------
+                 incomeResponse = await axios.post("http://localhost:3000/budget/income", {
+                amount: 230,
+                })
+                .then(response => console.log(response))
+                .catch(err => console.log(err))
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 //Expence set from server side expence data-----------------------------------
                 const expenceResponse = await axios.get("http://localhost:3000/budget/expense")
@@ -25,11 +50,16 @@ import axios from 'axios';
 
             }
             catch(error){
-                console.error("Error fetching budget data:", error)
+                console.error("Error fetching budget data:", error);
             }
         };
         fetchBudget()
     },[])
+
+
+
+    // post data transfer data too server--------------------------
+   
     return (
             
 <div className="bg-gradient-to-r from-violet-400 to-violet-600">

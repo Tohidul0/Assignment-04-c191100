@@ -9,9 +9,43 @@ router.get('/', function(req, res, next) {
 
 /* GET Income. */
 router.get('/income', function(req, res, next) {
+    //let updateIncome = req.body?.headers?.ammount;
+    //console.log(req.body);
     const income = 30500.00;
     res.send(JSON.stringify(income));
 });
+
+
+
+
+/* POST Income. */
+router.post('/income', function(req, res, next) {
+    console.log(req.body)
+    //console.log(req.body.ammount)
+    let updateIncome = req.body?.ammount;
+    //console.log(updateIncome)
+    res.send(JSON.stringify(updateIncome));
+ });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* GET Expense. */
 router.get('/expense', function(req, res, next) {
