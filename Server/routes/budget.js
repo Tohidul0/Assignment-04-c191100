@@ -31,26 +31,19 @@ router.post('/income', function(req, res, next) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* GET Expense. */
 router.get('/expense', function(req, res, next) {
     const expense = 10000.00;
     res.send(JSON.stringify(expense));
 });
+
+
+router.post('/expense', function(req, res, next) {
+    console.log(req.body)
+    //console.log(req.body.ammount)
+    let updateExpense = req.body?.ammount;
+    //console.log(updateIncome)
+    res.send(JSON.stringify(updateExpense));
+ });
 
 module.exports = router;

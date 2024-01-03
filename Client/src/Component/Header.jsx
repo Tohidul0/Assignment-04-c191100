@@ -16,9 +16,6 @@ import axios from 'axios';
                 setBudget(budgetresponse.data);
 
                 
-               
-                
-
                 //Income set from server side income data-----------------------------------------------
                 let incomeResponse = await axios.get("http://localhost:3000/budget/income")
                 setIncome(incomeResponse.data)
@@ -26,27 +23,23 @@ import axios from 'axios';
 
                 // post income data too server------------------------
                  incomeResponse = await axios.post("http://localhost:3000/budget/income", {
-                amount: 230,
+                amount : 230
                 })
                 .then(response => console.log(response))
                 .catch(err => console.log(err))
 
 
-
-
-
-
-
-
-
-
-
-
-
-
                 //Expence set from server side expence data-----------------------------------
-                const expenceResponse = await axios.get("http://localhost:3000/budget/expense")
+                let expenceResponse = await axios.get("http://localhost:3000/budget/expense")
                 setExpese(expenceResponse.data)
+
+
+                //post expence data too server------------------------------------
+                expenceResponse = await axios.post("http://localhost:3000/budget/income",{
+                    ammount : 500
+                })
+                .then(response => console.log(response))
+                .catch(err => console.log(err))
 
             }
             catch(error){
