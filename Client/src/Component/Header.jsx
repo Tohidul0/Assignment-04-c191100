@@ -5,6 +5,7 @@ import axios from 'axios';
 
     const [budget, setBudget] = useState('');
     const [income, setIncome] = useState('');
+    const [expense, setExpese] = useState('')
     useEffect(()=>{
         const fetchBudget =async () =>{
            
@@ -17,6 +18,11 @@ import axios from 'axios';
                 //Income set from server sidr income data-----------------------------------------------
                 const incomeResponse = await axios.get("http://localhost:3000/budget/income")
                 setIncome(incomeResponse.data)
+
+                //Expence set from server side expence data-----------------------------------
+                const expenceResponse = await axios.get("http://localhost:3000/budget/expense")
+                setExpese(expenceResponse.data)
+
             }
             catch(error){
                 console.error("Error fetching budget data:", error)
@@ -57,7 +63,7 @@ import axios from 'axios';
             <div className="mt-2 flex items-center justify-between bg-red-500 px-4 py-3 text-sm">
                 <span>Expenses</span>
                 <p>
-                - BDT <span id="total-expence">3,391.45</span>
+                - BDT <span id="total-expence">{expense}</span>
                 </p>
             </div>
     </div>
